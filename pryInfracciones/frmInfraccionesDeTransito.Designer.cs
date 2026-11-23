@@ -1,6 +1,6 @@
 ﻿namespace pryInfracciones
 {
-    partial class frmSistemaDeInfracciones
+    partial class frmInfraccionesDeTransito
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,9 @@
             colDominio = new DataGridViewTextBoxColumn();
             colInfraccion = new DataGridViewTextBoxColumn();
             colMonto = new DataGridViewTextBoxColumn();
+            btnCalcularTotal = new Button();
+            lblTotalRecaudado = new Label();
+            txtTotalRecaudado = new TextBox();
             grpDatosActa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInfracciones).BeginInit();
             SuspendLayout();
@@ -74,6 +77,7 @@
             btnRegistrar.TabIndex = 9;
             btnRegistrar.Text = "Registrar ";
             btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // txtMonto
             // 
@@ -81,6 +85,8 @@
             txtMonto.Name = "txtMonto";
             txtMonto.Size = new Size(100, 23);
             txtMonto.TabIndex = 8;
+            txtMonto.KeyPress += txtMonto_KeyPress;
+            txtMonto.TextChanged += ValidarCampos_TextChanged;
             // 
             // lblMonto
             // 
@@ -117,6 +123,8 @@
             txtDominio.Name = "txtDominio";
             txtDominio.Size = new Size(100, 23);
             txtDominio.TabIndex = 3;
+            txtDominio.KeyPress += txtDominio_KeyPress;
+            txtDominio.TextChanged += ValidarCampos_TextChanged;
             // 
             // lblDominio
             // 
@@ -134,6 +142,8 @@
             txtNroActa.Name = "txtNroActa";
             txtNroActa.Size = new Size(100, 23);
             txtNroActa.TabIndex = 1;
+            txtNroActa.KeyPress += txtNroActa_KeyPress;
+            txtNroActa.TextChanged += ValidarCampos_TextChanged;
             // 
             // lblNroActa
             // 
@@ -150,7 +160,7 @@
             dgvInfracciones.Columns.AddRange(new DataGridViewColumn[] { colNroActa, colDominio, colInfraccion, colMonto });
             dgvInfracciones.Location = new Point(12, 236);
             dgvInfracciones.Name = "dgvInfracciones";
-            dgvInfracciones.Size = new Size(353, 202);
+            dgvInfracciones.Size = new Size(496, 202);
             dgvInfracciones.TabIndex = 1;
             // 
             // colNroActa
@@ -173,14 +183,45 @@
             colMonto.HeaderText = "Monto ($)";
             colMonto.Name = "colMonto";
             // 
-            // frmSistemaDeInfracciones
+            // btnCalcularTotal
+            // 
+            btnCalcularTotal.Location = new Point(12, 450);
+            btnCalcularTotal.Name = "btnCalcularTotal";
+            btnCalcularTotal.Size = new Size(130, 30);
+            btnCalcularTotal.TabIndex = 2;
+            btnCalcularTotal.Text = "Calcular total";
+            btnCalcularTotal.UseVisualStyleBackColor = true;
+            btnCalcularTotal.Click += btnCalcularTotal_Click;
+            // 
+            // lblTotalRecaudado
+            // 
+            lblTotalRecaudado.AutoSize = true;
+            lblTotalRecaudado.Location = new Point(270, 458);
+            lblTotalRecaudado.Name = "lblTotalRecaudado";
+            lblTotalRecaudado.Size = new Size(105, 15);
+            lblTotalRecaudado.TabIndex = 3;
+            lblTotalRecaudado.Text = "Total recaudado:";
+            // 
+            // txtTotalRecaudado
+            // 
+            txtTotalRecaudado.Location = new Point(381, 454);
+            txtTotalRecaudado.Name = "txtTotalRecaudado";
+            txtTotalRecaudado.ReadOnly = true;
+            txtTotalRecaudado.Size = new Size(127, 23);
+            txtTotalRecaudado.TabIndex = 4;
+            txtTotalRecaudado.TextAlign = HorizontalAlignment.Right;
+            // 
+            // frmInfraccionesDeTransito
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(377, 450);
+            ClientSize = new Size(520, 492);
             Controls.Add(dgvInfracciones);
             Controls.Add(grpDatosActa);
-            Name = "frmSistemaDeInfracciones";
+            Controls.Add(btnCalcularTotal);
+            Controls.Add(lblTotalRecaudado);
+            Controls.Add(txtTotalRecaudado);
+            Name = "frmInfraccionesDeTransito";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema de Control de Infracciones de Tránsito";
             grpDatosActa.ResumeLayout(false);
@@ -206,5 +247,8 @@
         private DataGridViewTextBoxColumn colDominio;
         private DataGridViewTextBoxColumn colInfraccion;
         private DataGridViewTextBoxColumn colMonto;
+        private Button btnCalcularTotal;
+        private Label lblTotalRecaudado;
+        private TextBox txtTotalRecaudado;
     }
 }
